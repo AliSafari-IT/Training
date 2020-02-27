@@ -1,7 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/** 
+ * Toetsenbord (Keyboard) is a subclass of ComputerOnderdeel(ComputerPart)
+ * 
+ We don't mention the attributes mark, serial number and price anymore. 
+ * We inherit these from the superclass.
+
  */
 package fact.it.www.beans;
 
@@ -9,24 +11,19 @@ package fact.it.www.beans;
  *
  * @author Ali
  */
-public class Toetsenbord {
+public class Toetsenbord extends ComputerOnderdeel {
 
-    private int serienummer;
-    private String merk;
     private boolean draadloos;
-    private double prijs;
 
     public Toetsenbord() {
-        serienummer = 987450;
-        merk = "?";
-        draadloos = true;
     }
 
     public Toetsenbord(String merk, double prijs) {
-        this.merk = merk;
+        super(merk);  //verwijzing naar de constructor van ComputerOnderdeel
         this.prijs = prijs;
     }
 
+    @Override
     public int getSerienummer() {
         return serienummer;
     }
@@ -59,6 +56,7 @@ public class Toetsenbord {
         this.prijs = prijs;
     }
 //extra methodes
+
     public double getPrijsDollar(double omreken) {
         return prijs * omreken;
     }

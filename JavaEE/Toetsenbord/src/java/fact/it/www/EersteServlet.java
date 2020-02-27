@@ -8,6 +8,10 @@ package fact.it.www;
 import fact.it.www.beans.Toetsenbord;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collections;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,14 +44,52 @@ public class EersteServlet extends HttpServlet {
             klavier.setDraadloos(false);
             out.println("<!DOCTYPE html>");
             out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Toetsenbord</title>");
-            out.println("</head>");
-            out.println("<body>");
+            out.println("<head><title>Servlet</title><link rel=\"stylesheet\" href='newcss.css'> </head>");
+            out.println("<body lang=NL-BE link=blue vlink=\"#954F72\">");
+            out.println("<div class=WordSection1><p class=MsoTitle>Java Web Application<br>Servlet</p>");
             out.println("<p>Het merk van mijn toetsenbord is " + klavier.getMerk() + "</p>");
-            	out.println("<p>" + klavier + "</p>");
+            out.println("<p>" + klavier + "</p>");
+            out.println("<hr>");
+            LocalDate vandaag = LocalDate.now();
+            out.println("<h3>Vandaag is " + vandaag + "</h3>");
+            out.println("<hr>");
+            out.println("<p>Jaar = " + vandaag.getYear());
+            out.println(", Maand = " + vandaag.getMonthValue());
+            out.println(", Dag = " + vandaag.getDayOfMonth() + "</p>");
+            out.println("<hr>");
 
-            out.println("</body>");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
+            LocalDate mijnDatum = LocalDate.parse("1/1/2000", formatter);
+            out.println(mijnDatum);
+            out.println("<hr>");
+            ArrayList<String> namenLijst;
+            namenLijst = new ArrayList<>();
+            namenLijst.add("Alex");		//constante waarde
+            namenLijst.add("Marie");		//constante waarde
+            String mijnNaam = "Ali";
+            namenLijst.add(mijnNaam); //variabele
+            //For - each lus
+            namenLijst.stream().forEach((naam) -> {
+                out.println(naam);
+                out.println(",  ");
+            });
+            out.println("<br>First name in the list: " + namenLijst.get(0) + "<br>");
+            //Shuffle all the elements of the ArrayList list:Collections.shuffle(list); 
+            Collections.shuffle(namenLijst);
+            //For - each lus
+            namenLijst.stream().forEach((naam) -> {
+                out.println(naam);
+                out.println(",  ");
+            });
+
+            try (PrintWriter output = response.getWriter()) {
+                Toetsenbord klavier1 = new Toetsenbord();
+                Toetsenbord klavier2 = new Toetsenbord("Logitech", 23.75);
+                output.println("<p>" + klavier1 + "</p>");
+                output.println("<p>" + klavier2 + "</p>");
+            }
+
+            out.println("</div></body>");
             out.println("</html>");
         }
     }
