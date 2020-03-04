@@ -41,6 +41,7 @@ public class EersteServlet extends HttpServlet {
             Toetsenbord klavier;
             klavier = new Toetsenbord();
             klavier.setMerk("Ergo");
+            klavier.setPrijs(1000.0);
             klavier.setDraadloos(false);
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -88,7 +89,7 @@ public class EersteServlet extends HttpServlet {
                 output.println("<p>" + klavier1 + "</p>");
                 output.println("<p>" + klavier2 + "</p>");
             }
-
+          
             out.println("</div></body>");
             out.println("</html>");
         }
