@@ -53,6 +53,7 @@
                                 <hr class="my-4">
                             </form>
                         </div>
+                        <a href="classGroup.jsp">Teacher/Class Page</a>
                     </div>
                 </div>
             </div>
