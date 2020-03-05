@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fact.it.www.Example1.controller;
+package fact.it.www.Example3.controller;
 
 import fact.it.www.Example1.model.Student;
-import fact.it.www.Example1.model.StudentService;
 import fact.it.www.Example2.studentCoursePreference;
+import fact.it.www.Example3.model.Docent;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,10 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Ali
  */
-@WebServlet(name = "StudentServlet", urlPatterns = {"/StudentDetails"})
-public class StudentServlet extends HttpServlet {
-
-    private final StudentService studentService = new StudentService();
+@WebServlet(name = "DocentServlet", urlPatterns = {"/DocentServlet"})
+public class DocentServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,18 +36,34 @@ public class StudentServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String studentId = request.getParameter("studentId");
         String studentName = request.getParameter("studentName");
-        String studentAddress = request.getParameter("studentAddress");
-        String studentCourse = request.getParameter("studentCourses");
+        String classNr = request.getParameter("classNr");
         String studentPreference = request.getParameter("studentPreference");
 
-        Student student = new Student(studentId, studentName, studentAddress);
-        studentCoursePreference coursePreference = new studentCoursePreference(studentId, studentName, studentAddress, studentCourse, studentPreference);
+        String docentName = "undefiend";
+        String className = "INF_".concat(classNr);
+        int klasnummer = Integer.parseInt(classNr);
+        switch (klasnummer) {
+            case 1:
+                docentName = "Kristine Mangelschots";
+                break;
+            case 2:
+            case 4:
+                docentName = "Christel Maes";
+                break;
+            case 3:
+            case 5:
+                docentName = "Christine Smeets";
+                break;
+            case 6:
+                docentName = "Els Peetermans";
+                break;
+        }
 
-        if (request.getParameter("studentFormSubmit") != null) {
-            request.setAttribute("coursePreference", coursePreference);
-            request.getRequestDispatcher("studentDetailsView.jsp").forward(request, response);
+        Docent docent = new Docent(studentName, docentName, className, studentPreference);
+        if (request.getParameter("classTeacherStudentPreferenceSubmit") != null) {
+            request.setAttribute("docent", docent);
+            request.getRequestDispatcher("classTeacherView.jsp").forward(request, response);
         }
     }
 
