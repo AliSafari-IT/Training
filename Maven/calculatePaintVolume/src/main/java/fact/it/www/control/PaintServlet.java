@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package fact.it.www.Example3.controller;
+package fact.it.www.control;
 
-import fact.it.www.Example3.model.Docent;
+import fact.it.www.beans.RoomSize;
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Ali
  */
-@WebServlet(name = "DocentServlet", urlPatterns = {"/DocentServlet"})
-public class DocentServlet extends HttpServlet {
+@WebServlet(name = "PaintServlet", urlPatterns = {"/PaintServlet"})
+public class PaintServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,36 +27,17 @@ public class DocentServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String studentName = request.getParameter("studentName");
-        String classNr = request.getParameter("classNr");
-        String studentPreference = request.getParameter("studentPreference");
-
-        String docentName = "undefiend";
-        String className = "INF_".concat(classNr);
-        int klasnummer = Integer.parseInt(classNr);
-        switch (klasnummer) {
-            case 1:
-                docentName = "Kristine Mangelschots";
-                break;
-            case 2:
-            case 4:
-                docentName = "Christel Maes";
-                break;
-            case 3:
-            case 5:
-                docentName = "Christine Smeets";
-                break;
-            case 6:
-                docentName = "Els Peetermans";
-                break;
+        double height = Double.parseDouble(request.getParameter("height"));
+        double length = Double.parseDouble(request.getParameter("length"));
+        double width = Double.parseDouble(request.getParameter("width"));
+        RoomSize rs = new RoomSize(height, length, width);
+        if (request.getParameter("ceiling") != null) {
+            rs.setCeiling(true);
         }
-
-        Docent docent = new Docent(studentName, docentName, className, studentPreference);
-        if (request.getParameter("classTeacherStudentPreferenceSubmit") != null) {
-            request.setAttribute("docent", docent);
-            request.getRequestDispatcher("classTeacherView.jsp").forward(request, response);
-        }
+        
+        request.setAttribute("renovation", rs);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("paintVolume.jsp");
+        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

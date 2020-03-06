@@ -17,7 +17,7 @@
                     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                         <div class="card card-signin my-1">
                             <div class="card-body">
-                                <h1 class="h2 text-center"><marquee direction="right" behavior="alternate">Class Group</marquee></h1>
+                                <div class="h2 text-center"><marquee behavior="alternate">Class Group</marquee></div>
                                 <form class="form-signin" action="./DocentServlet" method="post">
                                     <div class="form-label-group">
                                         <label for="studentName">Student Name</label>
@@ -36,11 +36,11 @@
                                     <%String[] chosenArray = {"APP", "BIT", "EMDEV", "INFRA", "no preference yet"};
                                         for (int j = 0; j < chosenArray.length; j++) {%>
                                     <p>
-                                        <input type="radio" name="studentPreference" value="<%=chosenArray[j]%>" id="<%=chosenArray[j]%>"/>
-                                        <label for="<%=chosenArray[j]%>"><%=chosenArray[j]%></label> 
+                                        <input type="radio" name="studentPreference" value="<%=chosenArray[j]%>"/>
+                                        <label><%=chosenArray[j]%></label> 
                                     </p>
                                     <%}%>
-                                    <input class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="classTeacherStudentPreferenceSubmit" id="studentFormSubmit" class="form-control" required autofocus>
+                                    <input class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="classTeacherStudentPreferenceSubmit" id="studentFormSubmit" class="form-control">
                                 </div>
                                 <hr class="my-4">
                             </form>
@@ -50,8 +50,8 @@
                 </div>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     </body>
 </html>
