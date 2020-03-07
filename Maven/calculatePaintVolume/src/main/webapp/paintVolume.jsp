@@ -6,6 +6,7 @@
 
 <%@page import="fact.it.www.beans.RoomSize"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces ="true" %>
 <!DOCTYPE html>
 <html>
     <head>

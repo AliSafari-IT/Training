@@ -25,3 +25,4 @@ hs_err_pid*
 /JavaEE/WebApplicationInJEE/build/
 /JavaEE/WebApplicationInJEE/dist/
 /Maven/calculatePaintVolume/target/
+/Maven/JDBC_Employees/target/
