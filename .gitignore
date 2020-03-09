@@ -26,3 +26,6 @@ hs_err_pid*
 /JavaEE/WebApplicationInJEE/dist/
 /Maven/calculatePaintVolume/target/
 /Maven/JDBC_Employees/target/
+/Maven/JDBC_SportCenters/target/
+/JavaWeb/Sportcenters/nbproject/private/
+/JavaWeb/Sportcenters/build/
