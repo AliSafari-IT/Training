@@ -1,10 +1,13 @@
 package fact.it.www;
 
+import fact.it.www.beans.Members;
 import fact.it.www.beans.SportCamp;
 import fact.it.www.beans.Sportcentrum;
+import fact.it.www.dataaccess.DAMembers;
 import fact.it.www.dataaccess.DACamp;
 import fact.it.www.dataaccess.DASportcentrum;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,6 +26,7 @@ public class ManageServlet extends HttpServlet {
 
     private DASportcentrum dasportcentrum = null;
     private DACamp dacamp = null;
+    private DAMembers daMember = null;
 
     @Override
     public void init() throws ServletException {
@@ -41,6 +45,10 @@ public class ManageServlet extends HttpServlet {
                 dacamp = new DACamp(url, login, password, driver);
             }
 
+            if (daMember == null) {
+                daMember = new DAMembers(url, login, password, driver);
+            }
+
         } catch (ClassNotFoundException e) {
 //            throw new ServletException(e);
             e.printStackTrace();
@@ -50,16 +58,76 @@ public class ManageServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher rd = null;
-        if (request.getParameter("firstSportcenter") != null) {
-            Sportcentrum sportcentrum = dasportcentrum.getSportcentrum();
+        Sportcentrum sportcentrum;
+        Members member;
+        if (request.getParameter("memberID") != null) {
+            Integer memberID = tryParse(request.getParameter("memberID"));
+            if (memberID != null) {
+                member = daMember.getMember(memberID);
+                request.setAttribute("member", member);
+                rd = request.getRequestDispatcher("memberDetails.jsp");
+            } else {
+                String errMsg = "There is a problem to access member details for this person with member ID "+memberID+". Try again!";
+                request.setAttribute("errMsg", errMsg);
+                rd = request.getRequestDispatcher("error.jsp");
+            }
+        } else if (request.getParameter("WhichSportcenter") != null) {
+            Integer sportcentrumid = tryParse(request.getParameter("sportcentrumid"));
+            if (sportcentrumid != null) {
+                sportcentrum = dasportcentrum.getSportcentrum(sportcentrumid);
+                if (sportcentrum != null) {
+                    request.setAttribute("sportcentrum", sportcentrum);
+                    rd = request.getRequestDispatcher("sportcentrum.jsp");
+                } else {
+                    String errMsg = "ID " + sportcentrumid + " is not linked to any of sportcentra in the database. Try again!</ br>";
+                    request.setAttribute("errMsg", errMsg);
+                    rd = request.getRequestDispatcher("error.jsp");
+                }
+            } else {
+                String errMsg = "ID " + sportcentrumid + " is not linked to any of sportcentra in the database. Try again!</ br>";
+                request.setAttribute("errMsg", errMsg);
+                rd = request.getRequestDispatcher("error.jsp");
+            }
+        } else if (request.getParameter("firstSportcenter") != null) {
+            sportcentrum = dasportcentrum.getSportcentrum();
             request.setAttribute("sportcentrum", sportcentrum);
             rd = request.getRequestDispatcher("sportcentrum.jsp");
         } else if (request.getParameter("firstCamp") != null) {
             SportCamp kamp = dacamp.getCamp();
             request.setAttribute("kamp", kamp);
             rd = request.getRequestDispatcher("kamp.jsp");
+        } else if (request.getParameter("searchByLastname") != null) {
+            ArrayList<Members> members = daMember.getMembers(request.getParameter("lastName").trim().toLowerCase());
+            if (members != null) {
+                request.setAttribute("members", members);
+                rd = request.getRequestDispatcher("searchByLastnameResult.jsp");
+            } else {
+                String errMsg = "There is nobody with a family name consists of " + request.getParameter("lastName") + ". Try again!</ br>";
+                request.setAttribute("errMsg", errMsg);
+                rd = request.getRequestDispatcher("error.jsp");
+            }
+        } else if (request.getParameter("clicked") == null) {
+        } else {
+            String clicked = request.getParameter("clicked");
+            if (clicked.equalsIgnoreCase("firstSportcenter")) {
+                sportcentrum = dasportcentrum.getSportcentrum();
+                request.setAttribute("sportcentrum", sportcentrum);
+                rd = request.getRequestDispatcher("sportcentrum.jsp");
+            } else if (clicked.equalsIgnoreCase("firstCamp")) {
+                SportCamp kamp = dacamp.getCamp();
+                request.setAttribute("kamp", kamp);
+                rd = request.getRequestDispatcher("kamp.jsp");
+            }
         }
         rd.forward(request, response);
+    }
+
+    public Integer tryParse(String text) {
+        try {
+            return Integer.parseInt(text);
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
