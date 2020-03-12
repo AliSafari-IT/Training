@@ -30,7 +30,7 @@
                         <p>Do the same using the links below:</p>
                         <p class="text-center">
                             <a href="./ManageServlet?clicked=firstSportcenter">See the first sport center</a>
-                            <a href="./ManageServlet?clicked=firstCamp">See the first sport camp</a>
+                            <a href="./Servlet4Lists?clicked=firstCamp">See the first sport camp</a>
                         </p>
                     </div>
 
@@ -72,6 +72,11 @@ extends <code>Statement</code>
                                 <input type="submit" name="WhichSportcenter" value="Details">
                             </div>                       
                         </form>
+                    </div>
+                    <p class="text-danger Roboto h3">Or choose a sport center from a list or drop-down/ComboBox</p>
+                    <div class="row text-center Roboto">
+                        <p class="mx-1"><a href="./ManageServlet?clicked=SportCentersList">Choose from a list</a></p>
+                        <p class="mx-1"><a href="./ManageServlet?clicked=SportCentersComboBox">Choose from a Combo Box</a></p>
                     </div>
                     <div>
                         <p class="text-danger Roboto h3">like-operator</p>

@@ -12,9 +12,14 @@
             <div class="row d-flex justify-content-xl-center">
                 <!--Grid column-->
                 <div>
-                    <p class="display-1 Roboto fontW900 text-center text-white bg-dark">Flanders Sport Centers</p>
-                    <div class="h3 text-center">
-                        Details for sport camp <%=kamp.getKampnaam()%>
+                    <p class="display-3 Roboto fontW900 text-center text-white bg-dark">Flanders Sport Centers</p>
+                    <div class="h3 text-center">Details for sport camps</div>
+                    <div>
+                        The camp "<%=kamp.getKampnaam()%>" will be from <%=kamp.getBegindatum()%> to 
+                        <%=kamp.getEinddatum()%> suitable for <%=kamp.getSportTasks().getOmschrijving()%>. The price is 
+                        <%=kamp.getPrijs()%> EUR and there are still <%=kamp.getAantal_plaatsen()%> places free. 
+                        <p>This camp is about <u><%=kamp.getSportTasks().getOmschrijving()%></u> and will be organized 
+                        at the sport center "<%=kamp.getSportcentrum().getCentrumnaam()%>" (see the address below). </p>
                     </div>
                     <div class="Roboto fontW200 text-center">
                         <table class="table hover">

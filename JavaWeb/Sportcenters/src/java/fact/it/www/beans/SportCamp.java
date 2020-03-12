@@ -5,14 +5,32 @@ import java.sql.Date;
 public class SportCamp{
     private int id;
     private int centrum_id;
+    private Sportcentrum sportcentrum;
     private String kampnaam;
     private Date begindatum;
     private Date einddatum;
     private int sporttak_id;
+    private SportTasks sportTasks;
     private int min_gebjaar;
     private int max_gebjaar;
     private double prijs;
     private int aantal_plaatsen;
+
+    public Sportcentrum getSportcentrum() {
+        return sportcentrum;
+    }
+
+    public void setSportcentrum(Sportcentrum sportcentrum) {
+        this.sportcentrum = sportcentrum;
+    }
+
+    public SportTasks getSportTasks() {
+        return sportTasks;
+    }
+
+    public void setSportTasks(SportTasks sportTasks) {
+        this.sportTasks = sportTasks;
+    }
     
     public SportCamp() {
     }

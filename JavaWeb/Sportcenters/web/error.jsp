@@ -28,9 +28,19 @@
                         <%=errMsg%>
                     </div>
                     <p class="text-center">  <a href="index.jsp" class="w-100">Back to Homepage</a></p>
+
+                    <div class="row">
+                        <p class="col text-center btn">  <a href="index.jsp" class="w-100">Back to Homepage</a></p>
+                        <p class="col text-center btn">  <a href="javascript:history.back()" class="w-100">Back to Previous Page</a></p>                      
+                    </div>
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+            function goBack() {
+                window.history.back();
+            }
+        </script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>

@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class DASportcentrum {
 
@@ -72,5 +73,33 @@ public class DASportcentrum {
             e.printStackTrace();
         }
         return sportcentrum;
+    }
+
+    /**
+     * Get list of Sport Centers
+     */
+    public ArrayList<Sportcentrum> getSportcentersList() {
+        Sportcentrum sportcentrum = null;
+        ArrayList<Sportcentrum> spList = new ArrayList<>();
+        try (
+                Connection connection = DriverManager.getConnection(url, login, password);
+                PreparedStatement statement = connection.prepareStatement("SELECT * FROM sportcentrum");) {
+//            statement.setString(1, "%" + searchString + "%");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                sportcentrum = new Sportcentrum();
+                sportcentrum.setId(resultSet.getInt("id"));
+                sportcentrum.setCentrumnaam(resultSet.getString("centrumnaam"));
+                sportcentrum.setStraat(resultSet.getString("straat"));
+                sportcentrum.setHuisnummer(resultSet.getString("huisnummer"));
+                sportcentrum.setPostcode(resultSet.getInt("postcode"));
+                sportcentrum.setWoonplaats(resultSet.getString("woonplaats"));
+                sportcentrum.setTelefoon(resultSet.getString("telefoon"));
+                spList.add(sportcentrum);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return spList;
     }
 }

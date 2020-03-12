@@ -66,10 +66,12 @@ public class ManageServlet extends HttpServlet {
                 member = daMember.getMember(memberID);
                 request.setAttribute("member", member);
                 rd = request.getRequestDispatcher("memberDetails.jsp");
+                rd.forward(request, response);
             } else {
-                String errMsg = "There is a problem to access member details for this person with member ID "+memberID+". Try again!";
+                String errMsg = "There is a problem to access member details for this person with member ID " + memberID + ". Try again!";
                 request.setAttribute("errMsg", errMsg);
                 rd = request.getRequestDispatcher("error.jsp");
+                rd.forward(request, response);
             }
         } else if (request.getParameter("WhichSportcenter") != null) {
             Integer sportcentrumid = tryParse(request.getParameter("sportcentrumid"));
@@ -78,33 +80,40 @@ public class ManageServlet extends HttpServlet {
                 if (sportcentrum != null) {
                     request.setAttribute("sportcentrum", sportcentrum);
                     rd = request.getRequestDispatcher("sportcentrum.jsp");
+                    rd.forward(request, response);
                 } else {
-                    String errMsg = "ID " + sportcentrumid + " is not linked to any of sportcentra in the database. Try again!</ br>";
+                    String errMsg = "This is not a valid select. Try again!";
                     request.setAttribute("errMsg", errMsg);
                     rd = request.getRequestDispatcher("error.jsp");
+                    rd.forward(request, response);
                 }
             } else {
-                String errMsg = "ID " + sportcentrumid + " is not linked to any of sportcentra in the database. Try again!</ br>";
+                String errMsg = "This is not a valid select. Try again!";
                 request.setAttribute("errMsg", errMsg);
                 rd = request.getRequestDispatcher("error.jsp");
+                rd.forward(request, response);
             }
         } else if (request.getParameter("firstSportcenter") != null) {
             sportcentrum = dasportcentrum.getSportcentrum();
             request.setAttribute("sportcentrum", sportcentrum);
             rd = request.getRequestDispatcher("sportcentrum.jsp");
+            rd.forward(request, response);
         } else if (request.getParameter("firstCamp") != null) {
             SportCamp kamp = dacamp.getCamp();
             request.setAttribute("kamp", kamp);
             rd = request.getRequestDispatcher("kamp.jsp");
+            rd.forward(request, response);
         } else if (request.getParameter("searchByLastname") != null) {
             ArrayList<Members> members = daMember.getMembers(request.getParameter("lastName").trim().toLowerCase());
             if (members != null) {
                 request.setAttribute("members", members);
                 rd = request.getRequestDispatcher("searchByLastnameResult.jsp");
+                rd.forward(request, response);
             } else {
                 String errMsg = "There is nobody with a family name consists of " + request.getParameter("lastName") + ". Try again!</ br>";
                 request.setAttribute("errMsg", errMsg);
                 rd = request.getRequestDispatcher("error.jsp");
+                rd.forward(request, response);
             }
         } else if (request.getParameter("clicked") == null) {
         } else {
@@ -113,10 +122,22 @@ public class ManageServlet extends HttpServlet {
                 sportcentrum = dasportcentrum.getSportcentrum();
                 request.setAttribute("sportcentrum", sportcentrum);
                 rd = request.getRequestDispatcher("sportcentrum.jsp");
+                rd.forward(request, response);
             } else if (clicked.equalsIgnoreCase("firstCamp")) {
                 SportCamp kamp = dacamp.getCamp();
                 request.setAttribute("kamp", kamp);
                 rd = request.getRequestDispatcher("kamp.jsp");
+                rd.forward(request, response);
+            } else if (clicked.equalsIgnoreCase("SportCentersList")) {
+                ArrayList<Sportcentrum> spList = dasportcentrum.getSportcentersList();
+                request.setAttribute("spList", spList);
+                rd = request.getRequestDispatcher("chooseSportCentersFromList.jsp");
+                rd.forward(request, response);
+            } else if (clicked.equalsIgnoreCase("SportCentersComboBox")) {
+                ArrayList<Sportcentrum> spCombo = dasportcentrum.getSportcentersList();
+                request.setAttribute("spCombo", spCombo);
+                rd = request.getRequestDispatcher("chooseSportCentersFromList.jsp");
+                rd.forward(request, response);
             }
         }
         rd.forward(request, response);
