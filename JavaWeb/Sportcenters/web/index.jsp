@@ -96,6 +96,11 @@ statement.setString(1, "%" + partName + "%");
                             </div>
                         </form>
                     </div>
+                    <div>
+                        <form action="./Servlet4Admin" method="post">                   
+                            <input class="text-uppercase fontW900" type="submit" name="administration" value="Administration of sport tasks">                            
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

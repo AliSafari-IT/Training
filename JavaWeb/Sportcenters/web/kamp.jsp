@@ -43,6 +43,10 @@
                                 <th class="text-right">Number of Places</th>
                                 <td class="text-left"><%=kamp.getAantal_plaatsen()%></td>
                             </tr>
+                            <tr >
+                                <th class="text-right">Address</th>
+                                <td class="text-left"><%=kamp.getSportcentrum().getStraat()%> <%=kamp.getSportcentrum().getHuisnummer()%>, <%=kamp.getSportcentrum().getPostcode()%> <%=kamp.getSportcentrum().getWoonplaats()%> </td>
+                            </tr>
                         </table>
                     </div>    
 
