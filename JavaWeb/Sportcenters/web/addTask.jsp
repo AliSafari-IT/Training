@@ -22,7 +22,7 @@
                         <form action="./Servlet4Admin" method="post">
                             <div>
                                 <input type="text" name="taskContent" value=""
-                                   class="bg-warning Roboto w-100" placeholder="Add a task here">
+                                       class="bg-warning Roboto w-100" placeholder="Add a task here" required="required">
                             <input type="submit" name="addTaskButtonClicked">
                         </div>
                     </form>

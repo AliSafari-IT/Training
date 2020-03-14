@@ -111,6 +111,21 @@ public class DATasks {
             updated = false;
             e.printStackTrace();
         }
-        return updated;    }
+        return updated;    
+    }
+
+    public boolean deleteTask(Integer taskID) {
+        boolean updated = true;
+        try (
+                Connection connection = DriverManager.getConnection(url, login, password);
+                PreparedStatement statement = connection.prepareStatement("Delete FROM sporttak WHERE id=?");) {
+            statement.setInt(1, taskID);
+            statement.executeUpdate();
+        } catch (Exception e) {
+            updated = false;
+            e.printStackTrace();
+        }
+        return updated;   
+    }
 
 }

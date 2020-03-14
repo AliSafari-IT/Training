@@ -211,7 +211,7 @@ body {
     background-color: #3b5998;
 }
 
-a:link, a:visited {
+a:link, a:visited, .linkFormat {
     background-color: #f44336;
     color: white;
     padding: 15px 25px;
@@ -220,7 +220,7 @@ a:link, a:visited {
     display: inline-block;
 }
 
-a:hover, a:active {
+a:hover, a:active, .linkFormat:hover {
     background-color: red;
 }
 

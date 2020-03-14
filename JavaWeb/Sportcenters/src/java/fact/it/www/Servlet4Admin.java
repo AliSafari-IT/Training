@@ -83,7 +83,24 @@ public class Servlet4Admin extends HttpServlet {
                 rd.forward(request, response);
             }
         }
-        
+
+        if (request.getParameter("deleteTask") != null) {
+            Integer taskID = tryParse(request.getParameter("deleteTask"));
+            boolean deleted = daTasks.deleteTask(taskID);
+
+            if (deleted) {
+                String result = "Task Deleted Successfully!";
+                request.setAttribute("result", result);
+                rd = request.getRequestDispatcher("result.jsp");
+            } else {
+                String errMsg = "The task has not been deleted. Try again!!";
+                request.setAttribute("errMsg", errMsg);
+                rd = request.getRequestDispatcher("error.jsp");
+                rd.forward(request, response);
+            }
+            rd.forward(request, response);
+        }
+
         if (request.getParameter("addTaskButtonClicked") != null) {
             String taskContent = request.getParameter("taskContent");
             boolean added = daTasks.addTask(taskContent);
@@ -92,9 +109,14 @@ public class Servlet4Admin extends HttpServlet {
                 request.setAttribute("result", result);
                 rd = request.getRequestDispatcher("result.jsp");
                 rd.forward(request, response);
+            } else {
+                String errMsg = "The task has not been added. Try again!!";
+                request.setAttribute("errMsg", errMsg);
+                rd = request.getRequestDispatcher("error.jsp");
+                rd.forward(request, response);
             }
         }
-        
+
         if (request.getParameter("updateTaskButtonClicked") != null) {
             Integer taskID = tryParse(request.getParameter("taskID"));
             String updateTask = request.getParameter("taskContent");
