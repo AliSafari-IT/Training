@@ -63,8 +63,8 @@
                             function, processes it, and updates the HTML DOM (Document Object Model) to display the
                             page containing the new data.</li>
                     </ol>
-                    <p><a href="https://netbeans.org/kb/docs/web/ajax-quickstart.html">This tutorial</a> demonstrates how to construct the auto-complete scenario by following the
-                        process flow indicated in the above diagram. You first create the client-side files for the
+                    <p>To perform how to construct the auto-complete scenario by following the
+                        process flow indicated in the diagram above, you first create the client-side files for the
                         presentation and functionality needed to generate the <code>XMLHttpRequest</code> object.
                         Then, you set up the server-side by creating the data store and business logic using Java-based
                         technology. Finally, you return to the client-side and implement <code>callback()</code>,
