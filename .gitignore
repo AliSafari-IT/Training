@@ -42,3 +42,6 @@ hs_err_pid*
 /JavaWeb/JavaServerFaces/SimpleJSFApp/nbproject/private/
 /JavaWeb/JavaServerFaces/WebJSF2_2App/nbproject/private/
 /JavaWeb/JavaServerFaces/WebJSF2_2App/build/
+/JavaWeb/JavaServerFaces/WebJSF_GuessNumberApp/nbproject/private/
+/JavaWeb/JavaServerFaces/WebJSF_GuessNumberApp/build/
+/JavaWeb/JavaServerFaces/WebJSF_GuessNumberApp/dist/
