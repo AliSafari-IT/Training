@@ -27,7 +27,11 @@ public class UserNumberBean implements Serializable {
     Integer userNumber;
     String response;
 
-   public String getResponse() {
+    /**
+     *
+     * @return
+     */
+    public String getResponse() {
     if ((userNumber != null) && (userNumber.compareTo(randomInt) == 0)) {
 
         //invalidate user session

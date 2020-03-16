@@ -13,12 +13,11 @@
             </ui:define>
 
             <ui:define name="box">
-                <h4><h:outputText escape="false" value="#{UserNumberBean.response}"/></h4>
-
+                <h4>
+                    <h:outputText escape="false" value="#{UserNumberBean.response}"/>
+                </h4>
                 <h:form prependId="false">
-
-                    <h:commandButton id="backButton" value="Back" action="greeting" />
-
+                    <h:commandButton id="backButton" value="Back" action="index" />
                 </h:form>
             </ui:define>
 
