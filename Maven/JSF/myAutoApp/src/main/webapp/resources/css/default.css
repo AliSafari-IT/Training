@@ -1,0 +1,9 @@
+h1{
+    font-family: 'Sedgwick Ave', cursive;
+    color: black;
+    font-style: oblique;
+}
+.ui-widget,.ui-widget .ui-widget {
+    font-size: 85% !important;
+    font-family: 'Sedgwick Ave', cursive;
+}
