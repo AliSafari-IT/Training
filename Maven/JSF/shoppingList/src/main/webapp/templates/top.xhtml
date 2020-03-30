@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+        <ui:composition>
+            <header>
+                <h1 class="title ui-widget-header">Shopping <i class="pi pi-list"></i> (Cheese Price List)</h1>
+            </header>
+            <p:tabMenu activeIndex="#{param.i}">
+                <p:menuitem value="Overview" outcome="shoppingList" icon="fa fa-car">
+                    <f:param name="i" value="0" />
+                </p:menuitem>
+                <p:menuitem value="Statistics" outcome="chartPieView" icon="fa fa-pie-chart">
+                    <f:param name="i" value="1" />
+                </p:menuitem>
+            </p:tabMenu>
+        </ui:composition>
+</html>
