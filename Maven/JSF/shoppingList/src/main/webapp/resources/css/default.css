@@ -7,23 +7,40 @@ body {
 }
 
 h1 {
-    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    font-family: 'Sedgwick Ave Display', cursive;
     border-bottom: 1px solid #AFAFAF; 
-    font-size:  16px;
+    font-size:  24px;
     font-weight: bold;
-    margin: 0px;
-    padding: 0px;
-    color: #D20005;
+    margin: 10px;
+    padding: 30px;
+    color: crimson;
+    text-align: center;
 }
 
 a:link, a:visited {
-  color: #045491;
-  font-weight : bold;
-  text-decoration: none;
+    color: #045491;
+    font-weight : bold;
+    text-decoration: none;
 }
 
 a:link:hover, a:visited:hover  {
-  color: #045491;
-  font-weight : bold;
-  text-decoration : underline;
+    color: #045491;
+    font-weight : bold;
+    text-decoration : underline;
+}
+
+.left {
+    text-align: left;
+}
+
+.right div {
+    float: right;
+}
+
+.ui-diagram-element {
+    border:0.1em dotted #d4e06b;    
+    width:14em; 
+    height:4em;     
+    line-height:4em;
+    text-align: center;
 }

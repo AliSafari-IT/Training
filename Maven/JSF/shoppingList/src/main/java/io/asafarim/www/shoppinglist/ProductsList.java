@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package io.asafarim.www.shoppinglist;
 
 import java.io.Serializable;
@@ -66,6 +61,12 @@ public class ProductsList implements Serializable {
         p4.setPricePerUnit(5.99);
         p4.setVolume(5);
         productsListing.add(p4);
+        Product p5 = new Product();
+        p5.setProductName("Blue Marble Jack");
+        p5.setPurchaseDate(date);
+        p5.setPricePerUnit(4.89);
+        p5.setVolume(12);
+        productsListing.add(p5);
     }
 
     public void add(Product p) {
